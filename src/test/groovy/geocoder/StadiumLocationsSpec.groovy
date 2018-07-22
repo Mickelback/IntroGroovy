@@ -15,17 +15,19 @@
  * ========================================================== */
 package geocoder
 
+import spock.lang.Ignore
 import spock.lang.Shared;
 import spock.lang.Specification;
 import spock.lang.Unroll;
 import groovy.sql.Sql
 
+@Ignore
 class StadiumLocationsSpec extends Specification {
     @Shared Sql db
     
     def setupSpec() {
         db = Sql.newInstance(
-            'jdbc:h2:build/baseball;IFEXISTS=TRUE', 
+            'jdbc:h2:./build/baseball;IFEXISTS=TRUE',
             'org.h2.Driver')
     }
     
@@ -37,5 +39,9 @@ class StadiumLocationsSpec extends Specification {
         
         where:
         [name,lat,lng] << db.rows('select name,latitude,longitude from stadium')
+    }
+
+    def cleanupSpec() {
+        db?.close()
     }
 }

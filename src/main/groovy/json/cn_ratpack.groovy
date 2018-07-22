@@ -13,13 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
-package oop
+package json
 
-class Circle {
-	double radius
-	private String name
-	
-	double getArea() {
-		return Math.PI*radius*radius
-	}
-}
+import groovy.json.JsonSlurper
+
+def url = 'http://localhost:5050'
+
+def json = new JsonSlurper().parseText(url.toURL().text)
+println json?.joke

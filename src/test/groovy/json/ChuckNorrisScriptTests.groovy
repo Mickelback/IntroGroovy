@@ -27,13 +27,13 @@ class ChuckNorrisScriptTests {
         GroovyShell shell = new GroovyShell()
         shell.evaluate(new File("$base/json/chuck_norris.groovy"))
     }
-    
+
     @Test
     void testChuckNorrisOffline() {
         def result = '''
         {
             "value" : {
-                "joke" : "Chuck Norris can make a class abstract AND final"
+                "joke" : "Chuck Norris can make a method abstract AND final"
             }
         }
         '''
